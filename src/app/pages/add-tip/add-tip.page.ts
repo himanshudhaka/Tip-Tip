@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { format, parseISO } from 'date-fns';
+
 
 @Component({
   selector: 'app-add-tip',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTipPage implements OnInit {
 
+  dateValue: string;
+  userType: string;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  formatDate(value: string) {
+    console.log(value);
+    return format(parseISO(value), 'hh:mm a, dd MMM yyyy');
+  }
 }

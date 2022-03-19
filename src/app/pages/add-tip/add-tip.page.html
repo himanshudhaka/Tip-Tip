@@ -1,26 +1,65 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>add-tip</ion-title>
+    <ion-toolbar>
+      <ion-title>TIP-OFF</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-item>
+    <ion-label position="floating">Crime Category</ion-label>
+    <ion-select [(ngModel)]="userType">
+      <ion-select-option value="wanted-person">Wanted Person</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-list *ngIf="userType === 'wanted-person'">
+    <ion-list-header>
+      <ion-label>Location of person</ion-label>
+    </ion-list-header>
     <ion-item>
-      <ion-label>Please select</ion-label>
-      <ion-select placeholder="Select One" interface="action-sheet" [(ngModel)]="userType">
-        <ion-select-option value="assault">Assault</ion-select-option>
-        <ion-select-option value="murder">Murder</ion-select-option>
-        <ion-select-option value="burglary">Burglary</ion-select-option>
-      </ion-select>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input></ion-input>
     </ion-item>
-    <ion-item *ngIf="userType == 'assault'">
-      <ion-label position="floating">Town or city or Postcode (VITAL INFORMATION)</ion-label>
-      <ion-textarea></ion-textarea>
+    <ion-item>
+      <ion-label position="floating">City</ion-label>
+      <ion-input></ion-input>
     </ion-item>
-    <ion-item *ngIf="userType == 'murder'">
-      <ion-label position="floating">Please give details of the person(s) you wish to report, including name(s) and address(es).</ion-label>
-      <ion-textarea></ion-textarea>
+
+    <div style="display:flex">
+      <ion-item style="width: 50%">
+        <ion-label position="floating">State</ion-label>
+        <ion-select>
+          <ion-select-option value="wanted person">Wanted Person</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item style="width: 50%">
+        <ion-label position="floating">Zip</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+    </div>
+
+    <ion-list-header>
+      <ion-label>Time of occurrance</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label position="floating">Date and Time</ion-label>
+      <ion-input [value]="dateValue"></ion-input>
+      <ion-button slot="end" fill="clear" id="open-date-input-2" style="margin: auto 0">
+        <ion-icon icon="calendar"></ion-icon>
+      </ion-button>
+      <ion-modal trigger="open-date-input-2" class="datetime">
+        <ng-template>
+          <ion-datetime
+            #popoverDatetime2
+            (ionChange)="dateValue = formatDate(popoverDatetime2.value)"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
     </ion-item>
   </ion-list>
 </ion-content>
+<ion-footer>
+  <ion-button expand="full">Submit</ion-button>
+</ion-footer>

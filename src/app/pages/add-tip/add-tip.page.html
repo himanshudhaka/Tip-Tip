@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>add-tip</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Please select</ion-label>
+      <ion-select placeholder="Select One" interface="action-sheet" [(ngModel)]="userType">
+        <ion-select-option value="assault">Assault</ion-select-option>
+        <ion-select-option value="murder">Murder</ion-select-option>
+        <ion-select-option value="burglary">Burglary</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="userType == 'assault'">
+      <ion-label position="floating">Town or city or Postcode (VITAL INFORMATION)</ion-label>
+      <ion-textarea></ion-textarea>
+    </ion-item>
+    <ion-item *ngIf="userType == 'murder'">
+      <ion-label position="floating">Please give details of the person(s) you wish to report, including name(s) and address(es).</ion-label>
+      <ion-textarea></ion-textarea>
+    </ion-item>
+  </ion-list>
+</ion-content>

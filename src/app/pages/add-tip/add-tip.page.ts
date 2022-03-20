@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { format, parseISO } from 'date-fns';
 
-
 @Component({
   selector: 'app-add-tip',
   templateUrl: './add-tip.page.html',

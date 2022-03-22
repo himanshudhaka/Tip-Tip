@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
+  tt = 20;
+  rt = 5;
+  ct = 15;
+
   constructor() { }
 
   ngOnInit() {

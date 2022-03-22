@@ -1,10 +1,47 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Home</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div style="background: var(--ion-color-primary); height: 150px; margin-bottom: -40px; border-bottom-right-radius: 40px;">
+    <ion-item color="primary" lines="none">
+      <ion-label ><h1>Welcome<span> Name</span></h1></ion-label>
+      <ion-badge color="warning" slot="end">55</ion-badge>
+    </ion-item>
+    <ion-item color="primary" lines="none" style="margin-top: -15px; z-index: 10;">
+      <p>Lorem ipsum dolor sit.</p>
+    </ion-item>
+
+  </div>
+  <div style="margin-top: -40px; margin-left: 20px;">
+
+    <ion-avatar slot="start" style="width: 80px;height: 80px; --border-radius:20px;">
+      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+    </ion-avatar>
+  </div>
+
+  <ion-card style="display: flex; flex-direction: row; text-align: center;">
+    <ion-item lines="none" style="text-align: center; display: flex; flex-direction: column;">
+      <h5>Total Tips</h5>
+      <ion-text [color]="tt < 0 ? 'danger' : tt >= 20 ? 'success' : 'warning'">
+        <strong>{{tt}}</strong>
+      </ion-text>
+    </ion-item>
+
+    <ion-item lines="none" style="text-align: center; display: flex; flex-direction: column;">
+      <h5>Confirmed Tips</h5>
+      <ion-text [color]="ct < 0 ? 'danger' : ct >= 20 ? 'success' : 'warning'">
+        <strong>{{ct}}</strong>
+      </ion-text>
+    </ion-item>
+
+    <ion-item lines="none" style="text-align: center; display: flex; flex-direction: column;">
+      <h5>Rejected Tips</h5>
+      <ion-text [color]="rt < 0 ? 'danger' : rt >= 20 ? 'success' : 'warning'">
+        <strong>{{rt}}</strong>
+      </ion-text>
+    </ion-item>
+
+  </ion-card>
+
+
+
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="/add-tip">

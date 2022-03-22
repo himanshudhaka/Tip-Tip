@@ -10,6 +10,11 @@ export class AddTipPage implements OnInit {
 
   dateValue: string;
   userType: string;
+  states = [
+    'Andhra Pradesh',
+    'Rajasthan',
+    'Maharashtra'
+  ];
 
   constructor() { }
 

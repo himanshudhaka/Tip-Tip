@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="text-align: center">
+    <ion-avatar style="width: 100px; height: 100px; margin: 20px auto 16px;" >
+      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+    </ion-avatar>
+    <ion-button fill="clear">Change Avatar</ion-button>
+  </div>
+  <ion-item style="margin-top: 20px;">
+    <ion-label position="floating">Username</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <div style="text-align: center; padding: 20px;">
+    <ion-button color="secondary" routerLink="change-password">change password</ion-button>
+  </div>
+</ion-content>
+<ion-footer style="padding: 20px;">
+  <ion-button expand="block">submit</ion-button>
+</ion-footer>

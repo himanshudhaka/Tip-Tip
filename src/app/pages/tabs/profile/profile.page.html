@@ -1,57 +1,55 @@
-<ion-header>
-  <ion-toolbar>
-      <ion-title>Profile</ion-title>
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-<div style="height: 170px; background: blue;"></div>
+  <div style="height: 170px; background: var(--ion-color-primary);"></div>
 
-<div style="margin-top: -80px;">
-  <ion-card>
-    <ion-card-content>
-     <h1>My Profile</h1>
-     <!-- <div>
-        <ion-icon name="person-outline" style="width: 100px;height: 100px;"></ion-icon>
-        <ion-label>Name</ion-label>
-     </div> -->
-     <ion-item>
-      <ion-avatar slot="start" style="width: 50px;height: 50px;">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
-      </ion-avatar>
+  <div style="margin-top: -80px;">
+    <ion-card>
+      <ion-card-content>
+      <!-- <div>
+          <ion-icon name="person-outline" style="width: 100px;height: 100px;"></ion-icon>
+          <ion-label>Name</ion-label>
+      </div> -->
+      <ion-item style="--inner-border-width: 0">
+        <ion-avatar slot="start" style="width: 80px;height: 80px;">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+        </ion-avatar>
 
-      <ion-label>
-        <div>Name</div>
-        <div>Trust-score:65 </div>
+        <ion-label>
+          <h1>Name</h1>
+          <h2>Trust score:
+            <ion-text [color]="trustScore < 0 ? 'danger' : trustScore >= 20 ? 'success' : 'warning'">
+              <strong>{{trustScore}}</strong>
+            </ion-text>
+          </h2>
 
-      </ion-label>
-      <ion-label>
+        </ion-label>
 
-      </ion-label>
+      </ion-item>
 
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <ion-list lines="full">
+    <ion-item routerLink="edit-profile">
+      Edit Profile
+      <ion-icon slot="end" name="chevron-forward"></ion-icon>
     </ion-item>
+    <ion-item routerLink="faq">
+      FAQs
+      <ion-icon slot="end" name="chevron-forward"></ion-icon>
+    </ion-item>
+    <ion-item routerLink="support">
+      Support
+      <ion-icon slot="end" name="chevron-forward"></ion-icon>
+    </ion-item>
+  </ion-list>
 
-    </ion-card-content>
-  </ion-card>
-</div>
-<ion-item routerLink="change-password">
-  Edit Profile
-  <ion-icon slot="end" name="chevron-forward"></ion-icon>
-</ion-item>
-<ion-item routerLink="faq">
-  FAQs
-  <ion-icon slot="end" name="chevron-forward"></ion-icon>
-</ion-item>
-<ion-item routerLink="support">
-  Support
-  <ion-icon slot="end" name="chevron-forward"></ion-icon>
-</ion-item>
-<ion-item color="danger" routerLink="logout">
-  Logout
-  <ion-icon slot="end" name="chevron-forward"></ion-icon>
-</ion-item>
+
 
 </ion-content>
+
+<ion-footer style="padding: 16px;">
+
+  <ion-button color="danger" expand="block">
+    Logout
+  </ion-button>
+</ion-footer>

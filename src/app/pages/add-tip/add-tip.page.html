@@ -15,6 +15,8 @@
         <ion-select-option value="wanted-person">Wanted Person</ion-select-option>
         <ion-select-option value="robbery">Robbery</ion-select-option>
         <ion-select-option value="drug">Drug</ion-select-option>
+        <ion-select-option value="domestic-abuse">Domestic Abuse</ion-select-option>
+        <ion-select-option value="murder">Murder</ion-select-option>
       </ion-select>
     </ion-item>
     <div *ngIf="userType === 'wanted-person'">
@@ -22,6 +24,7 @@
         <ion-label>Location of person</ion-label>
       </ion-list-header>
       <ion-item>
+
         <ion-label position="floating">Address</ion-label>
         <ion-input></ion-input>
       </ion-item>
@@ -34,7 +37,7 @@
         <ion-item style="width: 50%">
           <ion-label position="floating">State</ion-label>
           <ion-select>
-            <ion-select-option value="wanted person">Wanted Person</ion-select-option>
+            <ion-select-option *ngFor="let state of states" [value]="state">{{state}}</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item style="width: 50%">
@@ -61,11 +64,12 @@
     </div>
 
     <div *ngIf="userType === 'robbery'">
+      <ion-list-header>
+        <ion-label>Has the Robbery</ion-label>
+      </ion-list-header>
+
       <ion-list>
         <ion-radio-group value="biff">
-          <ion-list-header>
-            <ion-label>Has the Robbery</ion-label>
-          </ion-list-header>
           <ion-item>
             <ion-label>Occured</ion-label>
             <ion-radio slot="start" value="biff"></ion-radio>
@@ -75,50 +79,67 @@
             <ion-radio slot="start" value="griff"></ion-radio>
           </ion-item>
           <ion-item>
-            <ion-label>Will occure</ion-label>
+            <ion-label>Will Occur</ion-label>
             <ion-radio slot="start" value="buford"></ion-radio>
           </ion-item>
         </ion-radio-group>
       </ion-list>
+      <ion-list-header>
+        <ion-label>Location of person</ion-label>
+      </ion-list-header>
       <ion-item>
-        <ion-label position="stacked">Address</ion-label>
-        <ion-input placeholder="Address"></ion-input>
-        <ion-input placeholder="City"></ion-input>
-        <div style="display:flex">
-          <ion-item style="width: 50%">
-            <ion-input placeholder="State">
-            </ion-input>
-          </ion-item>
-          <ion-item style="width: 50%">
-            <ion-input placeholder="Pin Code"></ion-input>
-          </ion-item>
-        </div>
+        <ion-label position="floating">Address</ion-label>
+        <ion-input></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Date</ion-label>
-        <ion-input [value]="dateValue2"></ion-input>
-        <ion-button slot="end" fill="clear" id="open-date-input-3" style="margin: auto 0">
+        <ion-label position="floating">City</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+
+      <div style="display:flex">
+        <ion-item style="width: 50%">
+          <ion-label position="floating">State</ion-label>
+          <ion-select>
+            <ion-select-option *ngFor="let state of states" [value]="state">{{state}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item style="width: 50%">
+          <ion-label position="floating">Zip</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </div>
+      <ion-item>
+
+          <ion-label position="floating">Robber's Description</ion-label>
+          <ion-textarea></ion-textarea>
+
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Robber's vehicle (give vehicle number if you know)</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+
+
+      <ion-list-header>
+        <ion-label>Time of occurrance</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label position="floating">Date and Time</ion-label>
+        <ion-input [value]="dateValue"></ion-input>
+        <ion-button slot="end" fill="clear" id="open-date-input-2" style="margin: auto 0">
           <ion-icon icon="calendar"></ion-icon>
         </ion-button>
-        <ion-modal trigger="open-date-input-3" class="datetime">
+        <ion-modal trigger="open-date-input-2" class="datetime">
           <ng-template>
-            <ion-datetime #popoverDatetime2 (ionChange)="dateValue2 = formatDate(popoverDatetime2.value)">
-            </ion-datetime>
+            <ion-datetime #popoverDatetime2 (ionChange)="dateValue = formatDate(popoverDatetime2.value)"></ion-datetime>
           </ng-template>
         </ion-modal>
       </ion-item>
-      <ion-item>
-        <ion-label position="floating">Robbers identity</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Robbers vehical(give vehical number if you know)</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-    </div>
+      </div>
 
 
     <div *ngIf="userType === 'drug'">
+
       <ion-list>
         <ion-radio-group value="biff">
           <ion-list-header>
@@ -137,50 +158,211 @@
 
         </ion-radio-group>
       </ion-list>
+      <ion-list-header>
+        <ion-label>Location of person</ion-label>
+      </ion-list-header>
+
       <ion-item>
-
-
-        <ion-label position="stacked">Address</ion-label>
-        <ion-input placeholder="Address"></ion-input>
-        <ion-input placeholder="City"></ion-input>
-        <div style="display:flex">
-          <ion-item style="width: 50%">
-            <ion-input placeholder="State">
-            </ion-input>
-          </ion-item>
-          <ion-item style="width: 50%">
-            <ion-input placeholder="Pin Code"></ion-input>
-          </ion-item>
-
-        </div>
-
-
-
-
+        <ion-label position="floating">Address</ion-label>
+        <ion-input></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Date</ion-label>
-        <ion-input [value]="dateValue2"></ion-input>
+        <ion-label position="floating">City</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+
+      <div style="display:flex">
+        <ion-item style="width: 50%">
+          <ion-label position="floating">State</ion-label>
+          <ion-select>
+            <ion-select-option *ngFor="let state of states" [value]="state">{{state}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item style="width: 50%">
+          <ion-label position="floating">Zip</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </div>      <ion-list-header>
+        <ion-label>Time of occurrance</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label position="floating">Date and Time</ion-label>
+        <ion-input [value]="dateValue"></ion-input>
         <ion-button slot="end" fill="clear" id="open-date-input-2" style="margin: auto 0">
           <ion-icon icon="calendar"></ion-icon>
         </ion-button>
         <ion-modal trigger="open-date-input-2" class="datetime">
           <ng-template>
-            <ion-datetime #popoverDatetime2 (ionChange)="dateValue2 = formatDate(popoverDatetime2.value)">
-            </ion-datetime>
+            <ion-datetime #popoverDatetime2 (ionChange)="dateValue = formatDate(popoverDatetime2.value)"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+    </div>
+
+    <div *ngIf="userType === 'domestic-abuse'">
+      <ion-radio-group value="biff">
+        <ion-list-header>
+          <ion-label>Is It Happening Now Or Not</ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>Yes</ion-label>
+          <ion-radio slot="start" value="yes"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio slot="start" value="no"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+      <ion-list-header>
+        <ion-label>Location of person</ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">City</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+
+      <div style="display:flex">
+        <ion-item style="width: 50%">
+          <ion-label position="floating">State</ion-label>
+          <ion-select>
+            <ion-select-option *ngFor="let state of states" [value]="state">{{state}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item style="width: 50%">
+          <ion-label position="floating">Zip</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Abuser Name</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Abused Person Name</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-textarea></ion-textarea>
+      </ion-item>
+      <ion-list-header>
+        <ion-label>Time of occurrance</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label position="floating">Date and Time</ion-label>
+        <ion-input [value]="dateValue"></ion-input>
+        <ion-button slot="end" fill="clear" id="open-date-input-2" style="margin: auto 0">
+          <ion-icon icon="calendar"></ion-icon>
+        </ion-button>
+        <ion-modal trigger="open-date-input-2" class="datetime">
+          <ng-template>
+            <ion-datetime #popoverDatetime2 (ionChange)="dateValue = formatDate(popoverDatetime2.value)"></ion-datetime>
           </ng-template>
         </ion-modal>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Smuggler's identity</ion-label>
+
+      </ion-item>
+    </div>
+
+    <div *ngIf="userType === 'murder'">
+      <ion-radio-group value="biff">
+        <ion-list-header>
+          <ion-label>Has The Crime ?</ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>Occured</ion-label>
+          <ion-radio slot="start" value="yes"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Occuring</ion-label>
+          <ion-radio slot="start" value="no"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Will Occur</ion-label>
+          <ion-radio slot="start" value="no"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+
+      <ion-radio-group value="biff">
+        <ion-list-header>
+          <ion-label>About Crime</ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>Witness</ion-label>
+          <ion-radio slot="start" value="yes"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Suspicion</ion-label>
+          <ion-radio slot="start" value="no"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Aware Of Plan</ion-label>
+          <ion-radio slot="start" value="no"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+
+      <ion-list-header>
+        <ion-label>Location of person</ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">City</ion-label>
         <ion-input></ion-input>
       </ion-item>
 
-    </div>
+      <div style="display:flex">
+        <ion-item style="width: 50%">
+          <ion-label position="floating">State</ion-label>
+          <ion-select>
+            <ion-select-option *ngFor="let state of states" [value]="state">{{state}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item style="width: 50%">
+          <ion-label position="floating">Zip</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </div>
 
+
+        <ion-list-header>
+        <ion-label>Time of occurrance</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label position="floating">Date and Time</ion-label>
+        <ion-input [value]="dateValue"></ion-input>
+        <ion-button slot="end" fill="clear" id="open-date-input-2" style="margin: auto 0">
+          <ion-icon icon="calendar"></ion-icon>
+        </ion-button>
+        <ion-modal trigger="open-date-input-2" class="datetime">
+          <ng-template>
+            <ion-datetime #popoverDatetime2 (ionChange)="dateValue = formatDate(popoverDatetime2.value)"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+
+
+    </div>
 
   </ion-list>
 </ion-content>
-<ion-footer>
+<ion-footer class="ion-padding">
   <ion-button expand="full">Submit</ion-button>
 </ion-footer>

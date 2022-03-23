@@ -1,11 +1,11 @@
 <ion-content>
   <div style="background: var(--ion-color-primary); height: 150px; margin-bottom: -40px; border-bottom-right-radius: 40px;">
     <ion-item color="primary" lines="none">
-      <ion-label ><h1>Welcome<span> Name</span></h1></ion-label>
-      <ion-badge color="warning" slot="end">55</ion-badge>
-    </ion-item>
-    <ion-item color="primary" lines="none" style="margin-top: -15px; z-index: 10;">
-      <p>Lorem ipsum dolor sit.</p>
+      <ion-label>
+        <h1 style="padding-top: 20px; padding-bottom: 5px;">Welcome<span> Name</span></h1>
+        <p>Lorem ipsum dolor sit.</p>
+      </ion-label>
+      <ion-badge style="padding: 12px 12px 12px 12px;border-radius: 22px;font-size: 16px;" color="warning" slot="end">55</ion-badge>
     </ion-item>
 
   </div>
@@ -16,34 +16,28 @@
     </ion-avatar>
   </div>
 
-  <ion-card style="display: flex; flex-direction: row; text-align: center;">
-    <ion-item lines="none" style="text-align: center;">
-     <div style="display: flex; flex-direction: column;">
-       <h5>Total Tips</h5>
-       <ion-text [color]="tt < 0 ? 'danger' : tt >= 20 ? 'success' : 'warning'">
-         <strong>{{tt}}</strong>
-       </ion-text>
-     </div>
-    </ion-item>
-
-    <ion-item lines="none" style="text-align: center;">
-      <div style="display: flex; flex-direction: column;">
-        <h5>Confirmed Tips</h5>
-        <ion-text [color]="tt < 0 ? 'danger' : ct >= 20 ? 'success' : 'warning'">
-          <strong>{{ct}}</strong>
+  <ion-card color="light" style="text-align: center;margin-top: 20px;">
+    <h4 style="margin-top: 16px">Tips</h4>
+    <div style="display: flex; flex-direction: row">
+      <div class="ion-padding" style="width: 32%;">
+        <h5 style="margin-top: 0;">Total</h5>
+        <ion-text color="primary">
+          <h4>{{tt}}</h4>
         </ion-text>
       </div>
-     </ion-item>
-
-     <ion-item lines="none" style="text-align: center;">
-      <div style="display: flex; flex-direction: column;">
-        <h5>Rejected Tips</h5>
-        <ion-text [color]="tt < 0 ? 'danger' : rt >= 20 ? 'success' : 'warning'">
-          <strong>{{rt}}</strong>
+      <div class="ion-padding" style="width: 36%;">
+        <h5 style="margin-top: 0;">Confirmed</h5>
+        <ion-text color="success">
+          <h4>{{ct}}</h4>
         </ion-text>
       </div>
-     </ion-item>
-
+      <div class="ion-padding" style="width: 32%;">
+        <h5 style="margin-top: 0;">Rejected</h5>
+        <ion-text color="danger">
+          <h4>{{rt}}</h4>
+        </ion-text>
+      </div>
+    </div>
   </ion-card>
 
 

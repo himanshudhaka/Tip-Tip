@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>TIP-OFF</ion-title>
+    <ion-title>Add Tipoff</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -21,7 +21,7 @@
     </ion-item>
 
     <ion-list>
-      <div *ngIf="userType === 'wanted-person' || 'robbery' || 'drug' || 'domestic-use' || 'murder'">
+      <div *ngIf="userType === 'wanted-person' || userType === 'robbery'" >
         <ion-list-header>
           <ion-label>Location of person</ion-label>
         </ion-list-header>
@@ -65,7 +65,7 @@
         <ion-item>
           <ion-label position="floating">Description</ion-label>
           <ion-textarea></ion-textarea>
-      </ion-item>
+        </ion-item>
 
       </div>
 
@@ -114,45 +114,6 @@
 
         </ion-radio-group>
       </ion-list>
-      <ion-list-header>
-        <ion-label>Location of person</ion-label>
-      </ion-list-header>
-
-      <ion-item>
-        <ion-label position="floating">Address</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">City</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-
-      <div style="display:flex">
-        <ion-item style="width: 50%">
-          <ion-label position="floating">State</ion-label>
-          <ion-select>
-            <ion-select-option *ngFor="let state of states" [value]="state">{{state}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <ion-item style="width: 50%">
-          <ion-label position="floating">Zip</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
-      </div>      <ion-list-header>
-        <ion-label>Time of occurrance</ion-label>
-      </ion-list-header>
-      <ion-item>
-        <ion-label position="floating">Date and Time</ion-label>
-        <ion-input [value]="dateValue"></ion-input>
-        <ion-button slot="end" fill="clear" id="open-date-input-2" style="margin: auto 0">
-          <ion-icon icon="calendar"></ion-icon>
-        </ion-button>
-        <ion-modal trigger="open-date-input-2" class="datetime">
-          <ng-template>
-            <ion-datetime #popoverDatetime2 (ionChange)="dateValue = formatDate(popoverDatetime2.value)"></ion-datetime>
-          </ng-template>
-        </ion-modal>
-      </ion-item>
     </div>
 
     <div *ngIf="userType === 'domestic-abuse'">

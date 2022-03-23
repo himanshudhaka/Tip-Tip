@@ -17,26 +17,32 @@
   </div>
 
   <ion-card style="display: flex; flex-direction: row; text-align: center;">
-    <ion-item lines="none" style="text-align: center; display: flex; flex-direction: column;">
-      <h5>Total Tips</h5>
-      <ion-text [color]="tt < 0 ? 'danger' : tt >= 20 ? 'success' : 'warning'">
-        <strong>{{tt}}</strong>
-      </ion-text>
+    <ion-item lines="none" style="text-align: center;">
+     <div style="display: flex; flex-direction: column;">
+       <h5>Total Tips</h5>
+       <ion-text [color]="tt < 0 ? 'danger' : tt >= 20 ? 'success' : 'warning'">
+         <strong>{{tt}}</strong>
+       </ion-text>
+     </div>
     </ion-item>
 
-    <ion-item lines="none" style="text-align: center; display: flex; flex-direction: column;">
-      <h5>Confirmed Tips</h5>
-      <ion-text [color]="ct < 0 ? 'danger' : ct >= 20 ? 'success' : 'warning'">
-        <strong>{{ct}}</strong>
-      </ion-text>
-    </ion-item>
+    <ion-item lines="none" style="text-align: center;">
+      <div style="display: flex; flex-direction: column;">
+        <h5>Confirmed Tips</h5>
+        <ion-text [color]="tt < 0 ? 'danger' : ct >= 20 ? 'success' : 'warning'">
+          <strong>{{ct}}</strong>
+        </ion-text>
+      </div>
+     </ion-item>
 
-    <ion-item lines="none" style="text-align: center; display: flex; flex-direction: column;">
-      <h5>Rejected Tips</h5>
-      <ion-text [color]="rt < 0 ? 'danger' : rt >= 20 ? 'success' : 'warning'">
-        <strong>{{rt}}</strong>
-      </ion-text>
-    </ion-item>
+     <ion-item lines="none" style="text-align: center;">
+      <div style="display: flex; flex-direction: column;">
+        <h5>Rejected Tips</h5>
+        <ion-text [color]="tt < 0 ? 'danger' : rt >= 20 ? 'success' : 'warning'">
+          <strong>{{rt}}</strong>
+        </ion-text>
+      </div>
+     </ion-item>
 
   </ion-card>
 

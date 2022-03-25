@@ -1,9 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Tips</ion-title>
+    <ion-title>Tipoffs</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <p class="ion-padding">Here you can look at the tipoffs you have provided till now.</p>
+  <!-- <h3 class="ion-padding-start">Recent</h3> -->
+  <ion-card *ngFor="let tipoff of tipoffs" color="light" style="margin: 16px;">
+    <ion-card-header>
+      <ion-card-subtitle><ion-text [color]="tipoff.knowledge == 'Witnessed' ? 'danger' : tipoff.knowledge == 'Suspicion' ? 'warning' : 'primary'">{{tipoff.knowledge}}</ion-text></ion-card-subtitle>
+      <ion-card-title>{{tipoff.type}}</ion-card-title>
+    </ion-card-header>
 
+    <ion-card-content>
+      State of crime: <strong><ion-text [color]="tipoff.state == 'occurred' ? 'primary' : tipoff.state == 'occurring' ? 'danger' : 'warning'">{{tipoff.state}}</ion-text></strong><br>
+      Location: <strong>{{tipoff.location}}</strong><br>
+      Time and date: <strong>{{tipoff.time}}</strong>
+      <!-- Trustscore: <strong><ion-text [color]="tipoff.trustscore < 0 ? 'danger' : tipoff.trustscore >= 20 ? 'success' : 'warning'">{{tipoff.trustscore}}</ion-text></strong> -->
+      <div *ngIf="tipoff.showMore" style="margin-top: 16px;">
+        <strong>Description:</strong>
+        <p class="ion-margin-bottom">{{tipoff.description}}</p>
+        <img [src]="'assets/crime/' + tipoff.media" alt="">
+      </div>
+    </ion-card-content>
+    <ion-button (click)="tipoff.showMore ? tipoff.showMore = false : tipoff.showMore = true" fill="clear" expand="block">
+      <ion-icon slot="end" [name]="tipoff.showMore ? 'chevron-up' : 'chevron-down'"></ion-icon>
+      Read {{tipoff.showMore ? 'Less' : 'More'}}
+    </ion-button>
+  </ion-card>
 </ion-content>

@@ -2,17 +2,17 @@
   <div style="background: var(--ion-color-primary); height: 150px; margin-bottom: -40px; border-bottom-right-radius: 40px;">
     <ion-item color="primary" lines="none">
       <ion-label>
-        <h1 style="padding-top: 20px; padding-bottom: 5px;">Welcome<span> Name</span></h1>
-        <p>Lorem ipsum dolor sit.</p>
+        <h1 style="padding-top: 20px; padding-bottom: 5px;">Welcome</h1>
+        <p>Inform and protect your neighbourhood</p>
       </ion-label>
-      <ion-badge style="padding: 12px 12px 12px 12px;border-radius: 22px;font-size: 16px;" color="warning" slot="end">55</ion-badge>
+      <ion-badge style="padding: 12px 12px 12px 12px;border-radius: 22px;font-size: 16px;" color="warning" slot="end">{{ts}}</ion-badge>
     </ion-item>
 
   </div>
   <div style="margin-top: -40px; margin-left: 20px;">
 
     <ion-avatar slot="start" style="width: 80px;height: 80px; --border-radius:20px;">
-      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      <img src="assets/avatars/Asset 4.svg">
     </ion-avatar>
   </div>
 
@@ -44,8 +44,19 @@
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="light" data-desc="Missing Person" routerLink="missing-people"><ion-icon name="person-add-outline"></ion-icon></ion-fab-button>
+      <ion-fab-button color="light" data-desc="Wanted Person" routerLink="wanted-people"><ion-icon name="person-remove-outline"></ion-icon></ion-fab-button>
+      <ion-fab-button color="light" data-desc="Add Tipoff" routerLink="/add-tip"><ion-icon name="add"></ion-icon></ion-fab-button>
+      <!-- <ion-fab-button><ion-icon name="logo-vimeo"></ion-icon></ion-fab-button> -->
+    </ion-fab-list>
+  </ion-fab>
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="/add-tip">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab> -->
 </ion-content>

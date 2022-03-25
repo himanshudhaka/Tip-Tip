@@ -1,10 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div style="text-align: center;">
+    <img src="assets/logo.svg" alt="" height="120" style="margin: 50px 0 24PX;">
+  </div>
   <ion-list>
     <ion-item style="margin-bottom: 20px;">
       <ion-label position="floating">Username</ion-label>
@@ -18,13 +21,15 @@
       <ion-label position="floating">Confirm Password</ion-label>
       <ion-input></ion-input>
     </ion-item>
+    <div class="ion-margin-top" style="text-align: center;">
+      <ion-button routerLink="/tabs/home" style="--padding-start: 32px; --padding-end: 32px;">Submit</ion-button>
+    </div>
   </ion-list>
 </ion-content>
 
 <ion-footer>
-
   <div style="display:flex">
-    <ion-button expand="full" style="width:50%">Login</ion-button>
-    <ion-button expand="full" style="width:50%" disabled>Register</ion-button>
+    <ion-button routerLink="/login" color="secondary" expand="full" style="margin: 16px 8px 16px 16px; width:50%">Login</ion-button>
+    <ion-button color="secondary" expand="full" style="margin: 16px 16px 16px 8px; width:50%" disabled>Register</ion-button>
   </div>
 </ion-footer>

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar style="--min-height: 64px">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-avatar slot="start" style="width: 48px; height: 48px;"><img src="assets/police/Rajasthan_Police_Logo.png" alt=""></ion-avatar>
+    <ion-title>
+      Jaipur Police
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #ionContent>
+  <ion-card *ngFor="let message of messages" color="light" [ngClass]="{'green': message.senderSelf}" style="width: 80%">
+    <ion-card-content>
+      {{message.msg}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer style="padding: 4px">
+  <ion-item color="light" style="border-radius: 50px">
+    <ion-input placeholder="Message"></ion-input>
+    <ion-button color="success" class="send" slot="end" shape="round"><ion-icon slot="icon-only" name="send"></ion-icon></ion-button>
+  </ion-item>
+</ion-footer>

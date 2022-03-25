@@ -9,4 +9,29 @@
 
 <ion-content>
 
+  <p class="ion-padding">
+    Please ask your queries here. Leave us a message and our support team will contact you on the app.
+  </p>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Subject</ion-label>
+      <ion-select placeholder="What is the subject of your query?">
+        <ion-select-option>Report a Bug</ion-select-option>
+        <ion-select-option>Offer Feedback</ion-select-option>
+        <ion-select-option>Help with wallet</ion-select-option>
+        <ion-select-option>Cannot Add Tipoff</ion-select-option>
+        <ion-select-option>Tip Rewards</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Message</ion-label>
+      <ion-textarea rows="3" placeholder="Enter your message here"></ion-textarea>
+    </ion-item>
+  </ion-list>
 </ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block">Submit</ion-button>
+</ion-footer>

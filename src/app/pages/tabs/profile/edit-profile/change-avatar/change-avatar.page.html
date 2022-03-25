@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Change Avatar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding grid">
+    <ion-avatar *ngFor="let item of list">
+      <img [src]="'assets/avatars/Asset '+item+'.svg'" alt="">
+    </ion-avatar>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block">Save</ion-button>
+</ion-footer>

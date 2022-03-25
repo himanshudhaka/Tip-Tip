@@ -1,0 +1,19 @@
+ion-fab-button[data-desc] {
+  position: relative;
+  // --background: #fff;
+  --color: var(--ion-color-primary);
+}
+
+ion-fab-button[data-desc]::after {
+  position: absolute;
+  content: attr(data-desc);
+  z-index: 1;
+  right: 50px;
+  bottom: 8px;
+  color: var(--ion-color-dark);
+  background: var(--ion-color-light);
+  padding: 4px 6px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+}

@@ -23,6 +23,14 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'entry',
+    loadChildren: () => import('./pages/entry/entry.module').then( m => m.EntryPageModule)
+  },
+  {
+    path: 'chat-inside',
+    loadChildren: () => import('./pages/tabs/chat/chat-inside/chat-inside.module').then( m => m.ChatInsidePageModule)
+  }
 ];
 
 @NgModule({

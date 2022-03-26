@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{person.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img [src]="'assets/crime/' + person.photo" alt="">
+  <div class="ion-padding-horizontal">
+    <h3>Reward: ₹{{person.reward}}</h3>
+    <p>{{person.description}}</p>
+  </div>
+
+  <h4 class="ion-padding">Do you have any valuable information regarding this person?</h4>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Location of person</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">City</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <div style="display:flex">
+      <ion-item style="width: 50%">
+        <ion-label position="floating">State</ion-label>
+        <ion-select>
+          <ion-select-option *ngFor="let state of states" [value]="state">{{state}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item style="width: 50%">
+        <ion-label position="floating">Zip</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+    </div>
+
+    <ion-list-header>
+      <ion-label>Time of occurrence</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label position="floating">Date and Time</ion-label>
+      <ion-input [value]="dateValue"></ion-input>
+      <ion-button slot="end" fill="clear" id="open-date-input-2" style="margin: auto 0">
+        <ion-icon icon="calendar"></ion-icon>
+      </ion-button>
+      <ion-modal trigger="open-date-input-2" class="datetime">
+        <ng-template>
+          <ion-datetime #popoverDatetime2 (ionChange)="dateValue = formatDate(popoverDatetime2.value)"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea rows="3" placeholder="Enter description of the person you spotted"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-padding">
+    <ion-button expand="block">Submit</ion-button>
+  </div>
+</ion-content>
+

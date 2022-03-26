@@ -8,123 +8,128 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label position="floating">Crime Category</ion-label>
-      <ion-select [(ngModel)]="crimeType">
-        <ion-select-option value="wanted-person">Wanted Person</ion-select-option>
-        <ion-select-option value="robbery">Robbery</ion-select-option>
-        <ion-select-option value="drug">Drug Use</ion-select-option>
-        <ion-select-option value="domestic-abuse">Domestic Abuse</ion-select-option>
-        <ion-select-option value="murder">Murder</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-    <div *ngIf="crimeType">
-      <ion-list-header>
-        <ion-label>About your knowledge of Crime</ion-label>
-      </ion-list-header>
-      <ion-radio-group>
-        <ion-item>
-          <ion-label>Witnessed</ion-label>
-          <ion-radio slot="start" value="witness"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Suspicion</ion-label>
-          <ion-radio slot="start" value="suspicion"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Aware Of Planning</ion-label>
-          <ion-radio slot="start" value="planning"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
-
-      <ion-list-header>
-        <ion-label>Has the Crime</ion-label>
-      </ion-list-header>
-      <ion-radio-group>
-        <ion-item>
-          <ion-label>Occured</ion-label>
-          <ion-radio slot="start" value="past"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Occuring</ion-label>
-          <ion-radio slot="start" value="present"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Will Occur</ion-label>
-          <ion-radio slot="start" value="future"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
-
-      <ion-list-header>
-        <ion-label>Location of crime</ion-label>
-      </ion-list-header>
+  <form [formGroup]="form">
+    <ion-list>
       <ion-item>
-        <ion-label position="floating">Address</ion-label>
-        <ion-input></ion-input>
+        <ion-label position="floating">Crime Category</ion-label>
+        <ion-select [(ngModel)]="crimeType" formControlName="type">
+          <ion-select-option value="robbery">Robbery</ion-select-option>
+          <ion-select-option value="drug">Drug Use</ion-select-option>
+          <ion-select-option value="domestic-abuse">Domestic Abuse</ion-select-option>
+          <ion-select-option value="murder">Murder</ion-select-option>
+        </ion-select>
       </ion-item>
-      <ion-item>
-        <ion-label position="floating">City</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      <div style="display:flex">
-        <ion-item style="width: 50%">
-          <ion-label position="floating">State</ion-label>
-          <ion-select>
-            <ion-select-option *ngFor="let state of states" [value]="state">{{state}}</ion-select-option>
-          </ion-select>
+
+      <div *ngIf="crimeType">
+        <ion-list-header>
+          <ion-label>About your knowledge of Crime</ion-label>
+        </ion-list-header>
+        <ion-radio-group formControlName="knowledge">
+          <ion-item>
+            <ion-label>Witnessed</ion-label>
+            <ion-radio slot="start" value="witness"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Suspicion</ion-label>
+            <ion-radio slot="start" value="suspicion"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Aware Of Planning</ion-label>
+            <ion-radio slot="start" value="planning"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+
+        <ion-list-header>
+          <ion-label>Has the Crime</ion-label>
+        </ion-list-header>
+        <ion-radio-group formControlName="crime_state">
+          <ion-item>
+            <ion-label>Occured</ion-label>
+            <ion-radio slot="start" value="past"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Occuring</ion-label>
+            <ion-radio slot="start" value="present"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Will Occur</ion-label>
+            <ion-radio slot="start" value="future"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+
+        <ion-list-header>
+          <ion-label>Location of crime</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label position="floating">Address</ion-label>
+          <ion-input formControlName="address"></ion-input>
         </ion-item>
-        <ion-item style="width: 50%">
-          <ion-label position="floating">Zip</ion-label>
-          <ion-input></ion-input>
+        <ion-item>
+          <ion-label position="floating">City</ion-label>
+          <ion-input formControlName="city"></ion-input>
         </ion-item>
+        <div style="display:flex">
+          <ion-item style="width: 50%">
+            <ion-label position="floating">State</ion-label>
+            <ion-select formControlName="state">
+              <ion-select-option *ngFor="let state of states" [value]="state">{{state}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item style="width: 50%">
+            <ion-label position="floating">Zip</ion-label>
+            <ion-input formControlName="postal"></ion-input>
+          </ion-item>
+        </div>
+
+        <ion-list-header>
+          <ion-label>Time of occurrence</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label position="floating">Date and Time</ion-label>
+          <ion-input [value]="dateValue"></ion-input>
+          <ion-button slot="end" fill="clear" id="open-date-input-2" style="margin: auto 0">
+            <ion-icon icon="calendar"></ion-icon>
+          </ion-button>
+          <ion-modal trigger="open-date-input-2" class="datetime">
+            <ng-template>
+              <ion-datetime formControlName="datetime" #popoverDatetime2 (ionChange)="dateValue = formatDate(popoverDatetime2.value)"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea formControlName="description" rows="3" placeholder="Enter description, name(if possible) of the criminal and the crime taking place"></ion-textarea>
+        </ion-item>
+
+        <ion-item (click)="takePicture()" button class="-mx-5" style="--inner-border-width: 0">
+          <div class="ml-3 mr-1">Media(images, videos), if any</div>
+          <ion-icon color="primary" name="add-outline" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item style="margin: 8px 0;">
+          <ion-label position="floating">Please describe the crime in detail</ion-label>
+          <ion-textarea formControlName="assessment"></ion-textarea>
+        </ion-item>
+        <ion-label position="floating" style="margin-left: 16px;">Please solve the captcha</ion-label>
+        <div class="ion-padding" style="display: flex; align-items: center;">
+          <img src="assets/captcha.png" alt="" style="border: 1px solid;">
+          <span class="ion-padding"> = </span>
+          <input type="number" style="width: 64px;">
+        </div>
+
       </div>
 
-      <ion-list-header>
-        <ion-label>Time of occurrance</ion-label>
-      </ion-list-header>
-      <ion-item>
-        <ion-label position="floating">Date and Time</ion-label>
-        <ion-input [value]="dateValue"></ion-input>
-        <ion-button slot="end" fill="clear" id="open-date-input-2" style="margin: auto 0">
-          <ion-icon icon="calendar"></ion-icon>
-        </ion-button>
-        <ion-modal trigger="open-date-input-2" class="datetime">
-          <ng-template>
-            <ion-datetime #popoverDatetime2 (ionChange)="dateValue = formatDate(popoverDatetime2.value)"></ion-datetime>
-          </ng-template>
-        </ion-modal>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating">Description</ion-label>
-        <ion-textarea rows="3" placeholder="Enter description, name(if possible) of the criminal and the crime taking place"></ion-textarea>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked">Media(images, videos), if any</ion-label>
-        <ion-input type="file" multiple="true"></ion-input>
-      </ion-item>
-
-
-      <ion-item style="margin: 8px 0;">
-        <ion-label position="floating">Please describe the crime in detail</ion-label>
-        <ion-textarea></ion-textarea>
-      </ion-item>
-      <ion-label position="floating" style="margin-left: 16px;">Please solve the captcha</ion-label>
-      <div class="ion-padding" style="display: flex; align-items: center;">
-        <img src="assets/captcha.png" alt="" style="border: 1px solid;">
-        <span class="ion-padding"> = </span>
-        <input type="number" style="width: 64px;">
-      </div>
-
-    </div>
-
-  </ion-list>
+    </ion-list>
+  </form>
 </ion-content>
 <ion-footer class="ion-padding">
-  <ion-button routerLink="../" expand="full">Submit</ion-button>
+  <ion-button footer [disabled]="loading" (click)="onSubmit()" expand="block">
+    <ion-spinner *ngIf="loading; else btnTxt" name="dots" color="light"></ion-spinner>
+    <ng-template #btnTxt>
+      Submit
+    </ng-template>
+  </ion-button>
 </ion-footer>

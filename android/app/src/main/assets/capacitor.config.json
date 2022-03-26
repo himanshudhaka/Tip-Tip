@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "tip-tip",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

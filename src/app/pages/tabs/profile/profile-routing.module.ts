@@ -23,7 +23,11 @@ const routes: Routes = [
   {
     path: 'edit-profile',
     loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+  },  {
+    path: 'rewards',
+    loadChildren: () => import('./rewards/rewards.module').then( m => m.RewardsPageModule)
   }
+
 ];
 
 @NgModule({

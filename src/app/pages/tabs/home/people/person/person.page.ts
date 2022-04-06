@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class PersonPage implements OnInit {
 
   person = {
-    name: 'loefen',
-    photo: 'stealing-car.jpg',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae iste consequuntur hic rem adipisci nihil eligendi, harum magni et! Quibusdam delectus quae odit animi debitis placeat dicta consectetur quasi consequuntur.',
-    reward: 12038,
+    name: 'Babu',
+    photo: 'babu.jpg',
+    description: 'Babu is a hardened criminal with 4 muder cases on him, do not approach directly, was last seen at...',
+    reward: 90000,
   }
 
   states = [ 'Andhra Pradesh',

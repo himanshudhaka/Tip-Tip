@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+// import { FormBuilder } from '@angular/forms';
+import { LoadingController } from '@ionic/angular';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-tips',
@@ -45,9 +48,22 @@ export class TipsPage implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(
+    // private formBuilder: FormBuilder,
+    private apiService: ApiService,
+    private loadingController: LoadingController
+  ) { }
 
   ngOnInit() {
+    this.getTips()
   }
 
+  async getTips() {
+    const loading = await this.loadingController.create()
+    await loading.present()
+    this.apiService.getTips().subscribe((res: any) => {
+      console.log(res);
+
+    }).add(() => loading.dismiss())
+  }
 }

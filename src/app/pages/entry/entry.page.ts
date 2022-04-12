@@ -11,6 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class EntryPage implements OnInit {
 
   loading = true
+  uuid: any
 
   constructor(
     private apiService: ApiService,
@@ -18,22 +19,28 @@ export class EntryPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiService.getByUID({name: 'aa', uid: this.logDeviceInfo()})
-    .subscribe((res) => {
-      console.log(res);
-      if(res != null) {
-        this.loading = true
-        this.apiService.loginByUID({name: 'aa', uid: this.logDeviceInfo()}).subscribe(() => {
-          this.router.navigateByUrl('/tabs', {replaceUrl: true})
-        }).add(() => this.loading = false)
-      }
-    }).add(() => this.loading = false)
+    this.logDeviceInfo()
+    setTimeout(() => {
+      console.log(this.uuid)
+      this.apiService.getByUID({uid: this.uuid})
+      .subscribe((res) => {
+        console.log(res);
+        console.log('awd');
+        if(res != null) {
+          this.loading = true
+
+          this.apiService.loginByUID({uid: this.uuid}).subscribe(() => {
+            this.router.navigateByUrl('/tabs', {replaceUrl: true})
+          }).add(() => this.loading = false)
+        }
+        else {
+          this.loading = false
+        }
+      })
+    }, 500);
   }
 
-  logDeviceInfo = async () => {
-    const info = await Device.getInfo();
-    const id = await Device.getId()
-    console.log(info, id);
-    return id
+  logDeviceInfo () {
+    Device.getId().then(x => this.uuid = x.uuid)
   };
 }

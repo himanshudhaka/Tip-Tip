@@ -118,4 +118,9 @@ export class ApiService {
   addMedia(params: any) {
     return this.http.post(`${url}/media`, params)
   }
+  getTips() {
+    console.log(this.userValue.id);
+
+    return this.http.get(`${url}/tipoffs/${this.userValue.id}`)
+  }
 }

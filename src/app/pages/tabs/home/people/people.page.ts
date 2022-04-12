@@ -15,13 +15,13 @@ export class PeoplePage implements OnInit {
       id: 1,
       name: 'John Doe',
       reward: 5000,
-      photo: 'stealing-car.jpg'
+      photo: 'dhakad.jpg'
     },
     {
       id: 2,
       name: 'Babu',
       reward: 90000,
-      photo: 'stealing-car.jpg'
+      photo: 'babu.jpg'
     },
     {
       id: 3,

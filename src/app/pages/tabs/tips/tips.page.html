@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>Tipoffs</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -7,7 +7,7 @@
 <ion-content>
   <p class="ion-padding">Here you can look at the tipoffs you have provided till now.</p>
   <!-- <h3 class="ion-padding-start">Recent</h3> -->
-  <ion-card *ngFor="let tipoff of tipoffs" color="light" style="margin: 16px;">
+  <ion-card *ngFor="let tipoff of tipoffs" style="margin: 16px;">
     <ion-card-header>
       <ion-card-subtitle><ion-text [color]="tipoff.knowledge == 'Witnessed' ? 'danger' : tipoff.knowledge == 'Suspicion' ? 'warning' : 'primary'">{{tipoff.knowledge}}</ion-text></ion-card-subtitle>
       <ion-card-title>{{tipoff.type}}</ion-card-title>

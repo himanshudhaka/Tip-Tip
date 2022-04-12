@@ -1,5 +1,5 @@
 <ion-tabs>
-  <ion-tab-bar slot="bottom">
+  <ion-tab-bar class="py-2" slot="bottom">
     <ion-tab-button tab="home">
       <ion-icon name="home"></ion-icon>
       <ion-label>Home</ion-label>
@@ -7,6 +7,9 @@
     <ion-tab-button tab="tips">
       <ion-icon name="albums"></ion-icon>
       <ion-label>Tip Offs</ion-label>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/add-tip" class="add-btn mx-2">
+      <ion-icon name="add"></ion-icon>
     </ion-tab-button>
     <ion-tab-button tab="chat">
       <ion-icon name="chatbubble-ellipses"></ion-icon>

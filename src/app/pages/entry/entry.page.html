@@ -1,6 +1,6 @@
 <ion-content>
   <div style="height: 240px; background: var(--ion-color-primary); display: flex; justify-content: center;">
-   <img src="assets/logo.svg" alt="" style="height: 120px; margin-top: 16px;">
+   <img src="assets/logo-white.svg" alt="" style="height: 120px; margin-top: 16px;">
  </div>
 
  <div style="margin-top: -80px; border-radius: 50px 50px 0 0; background: #fff; padding: 16px 16px 16px; text-align: center;">
@@ -8,8 +8,8 @@
   <p style="margin-bottom: 32px;">Inform and Protect your neighbourhood</p>
   <ion-spinner *ngIf="loading; else btns" style="margin-top: 50px;"></ion-spinner>
     <ng-template #btns>
-      <ion-button routerLink="/add-tip" expand="block" style="margin-bottom: 16px;" color="success">New User</ion-button>
-      <ion-button routerLink="/login" expand="block" style="margin-bottom: 16px;">Existing User</ion-button>
+      <ion-button routerLink="/add-tip" expand="block" shape="round" fill="outline" class="mb-4">New User</ion-button>
+      <ion-button routerLink="/login" expand="block" shape="round">Existing User</ion-button>
     </ng-template>
  </div>
 

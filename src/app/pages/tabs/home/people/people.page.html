@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content>
+  <p class="px-4">Total {{wanted ? 'Wanted Person' : 'Missing Person'}}: 142</p>
   <ion-searchbar></ion-searchbar>
   <ion-list lines="full">
     <ion-item *ngFor="let person of people" button [routerLink]="['person', person.id]">

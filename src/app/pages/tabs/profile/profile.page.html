@@ -54,7 +54,10 @@
 
 <ion-footer style="padding: 16px;">
 
-  <ion-button color="danger" expand="block">
-    Logout
+  <ion-button [disabled]="loading" (click)="logout()" color="danger" expand="block">
+    <ion-spinner *ngIf="loading; else btnTxt" name="dots" color="light"></ion-spinner>
+    <ng-template #btnTxt>
+      Logout
+    </ng-template>
   </ion-button>
 </ion-footer>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Device } from '@capacitor/device';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,8 +11,11 @@ export class ProfilePage implements OnInit {
 
   trustScore = 10;
   uuid: any
+  loading = false
 
-  constructor() { }
+  constructor(
+    private apiService: ApiService
+  ) { }
 
   ngOnInit() {
     this.logDeviceInfo();
@@ -21,4 +25,8 @@ export class ProfilePage implements OnInit {
     Device.getId().then(x => this.uuid = x.uuid)
   }
 
+  logout() {
+    this.loading = true
+    this.apiService.logout().add(() => this.loading = false)
+  }
 }

@@ -113,14 +113,12 @@ export class ApiService {
     ).subscribe()
   }
   addTipoff(params: any) {
-    return this.http.post(`${url}/tipoffs`, params)
+    return this.http.post(`${url}/users/1/tipoffs`, params)
   }
   addMedia(params: any) {
     return this.http.post(`${url}/media`, params)
   }
   getTips() {
-    console.log(this.userValue.id);
-
-    return this.http.get(`${url}/tipoffs/${this.userValue.id}`)
+    return this.http.get(`${url}/users/${this.userValue.id}/tipoffs`)
   }
 }
